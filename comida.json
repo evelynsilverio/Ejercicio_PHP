@@ -1,0 +1,28 @@
+[
+    {
+        "comida": "Milanesas",
+        "tipo": "Guisado",
+        "descripcion":"Milanesa empanizada crujiente"
+    },
+    {
+        "comida": "Camarones",
+        "tipo": "Sopa",
+        "descripcion": "Camarones en caldo"
+    },
+    {
+        "comida": "Carne",
+        "tipo": "Guisado",
+        "descripcion": "Corte de carne"
+    },
+    {
+        "comida": "Fideos",
+        "tipo": "Sopa",
+        "descripcion":"Fideos en caldo de jitomate"
+    },
+    {
+        "comida": "Pescado",
+        "tipo": "Guisado",
+        "descripcion":"Pescado frito"
+    }
+
+]

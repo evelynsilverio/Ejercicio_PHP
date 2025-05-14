@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de comida</title>
+    <link rel="stylesheet" href="obtener.css">
+</head>
+<body>
+    <h1>Lista de comida</h1>
+    
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Comida</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody id="tablacomida">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+    function cargarComidas() {
+        const xhr = new XMLHttpRequest(); //crear el objeto
+        xhr.open("POST", "obtener.php", true);//para abrir la conexión con php 
+        
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+            const tabla = document.getElementById("tablacomida");
+            
+            if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            
+            if (Array.isArray(data) && data.length > 0) { //para recorrer los datos y mostrarlos en la tabla
+            data.forEach(fila => {
+                tabla.innerHTML += `
+                <tr>
+                    <td>${fila.idcomida}</td>
+                    <td>${fila.comida}</td>
+                    <td>${fila.tipo}</td>
+                    <td>${fila.descripcion}</td>
+                </tr>`;
+            });
+        } else {
+            tabla.innerHTML = "No hay datos";}
+        } else {
+            tabla.innerHTML = "Error al conectar con el servidor";
+        }
+    }
+};
+xhr.send();
+}
+    cargarComidas();
+    </script>
+</body>
+</html>
