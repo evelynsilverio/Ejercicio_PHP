@@ -1,3 +1,4 @@
+
 <?php
 header("Content-Type: application/json"); // sirve para que el navegador entienda que la respuesta se debe mostrar en json
 
