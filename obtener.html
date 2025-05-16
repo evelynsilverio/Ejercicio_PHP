@@ -7,6 +7,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="bg-light">
+    <style>
+        .placeholder{
+            border-radius: 10px;
+            background-color: #d0d1d2;
+        }
+    </style>
 
     <div class="container mt-5">
         <div class="card shadow-lg border-0 rounded">
@@ -17,24 +23,53 @@
                         <thead class="table-primary">
                             <tr>
                                 <th style="background-color: #0d6efd; color: white;">ID</th>
-                                <th style="background-color: #0d6efd; color: white">Comida</th>
-                                <th style="background-color: #0d6efd; color: white">Tipo</th>
-                                <th style="background-color: #0d6efd; color: white">Descripción</th>
+                                <th style="background-color: #0d6efd; color: white;">Comida</th>
+                                <th style="background-color: #0d6efd; color: white;">Tipo</th>
+                                <th style="background-color: #0d6efd; color: white;">Descripción</th>
                             </tr>
                         </thead>
                         <tbody id="tablacomida">
+                            <tr class="placeholder-glow">
+                                <td><span class="placeholder col-3"></span></td>
+                                <td><span class="placeholder col-6"></span></td>
+                                <td><span class="placeholder col-4"></span></td>
+                                <td><span class="placeholder col-8"></span></td>
+                            </tr>
+                            <tr class="placeholder-glow">
+                                <td><span class="placeholder col-3"></span></td>
+                                <td><span class="placeholder col-6"></span></td>
+                                <td><span class="placeholder col-4"></span></td>
+                                <td><span class="placeholder col-8"></span></td>
+                            </tr>
+                            <tr class="placeholder-glow">
+                                <td><span class="placeholder col-3"></span></td>
+                                <td><span class="placeholder col-6"></span></td>
+                                <td><span class="placeholder col-4"></span></td>
+                                <td><span class="placeholder col-8"></span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
     <script>
     function cargarComidas() {
         $.ajax({
             url: 'obtener.php',
             type: 'POST',
             dataType: 'json',
+            beforeSend: function(){
+                    let placeholders = `
+                    <tr class="placeholder-glow">
+                        <td><span class="placeholder col-3"></span></td>
+                        <td><span class="placeholder col-6"></span></td>
+                        <td><span class="placeholder col-4"></span></td>
+                        <td><span class="placeholder col-8"></span></td>
+                    </tr>`;
+                    $("#tablacomida").html(placeholders);
+                },
             success: function(data) {
                 const tabla = $("#tablacomida");
                 tabla.empty();
